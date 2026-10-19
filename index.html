@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10172c">
+  <meta name="description" content="Voxel Realms — a colorful 3D block survival adventure.">
+  <title>Voxel Realms | Block Survival</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Voxel Realms home">
+        <span class="brand-icon">◆</span>
+        VOXEL <span class="brand-accent">REALMS</span>
+      </a>
+      <div class="top-actions">
+        <span id="dimension-badge" class="pill">🌿 OVERWORLD</span>
+        <button id="pause-button" class="small-button">Ⅱ Pause</button>
+      </div>
+    </header>
+
+    <main id="stage">
+      <div id="scene"></div>
+
+      <div id="hud">
+        <div class="status-panel glass">
+          <div class="status-label">❤️ HEALTH</div>
+          <div class="bar"><span id="health-bar"></span></div>
+          <div>Health: <span id="health-value">100</span></div>
+
+          <div class="status-label">🍗 HUNGER</div>
+          <div class="bar hunger"><span id="hunger-bar"></span></div>
+          <div>Hunger: <span id="hunger-value">100</span></div>
+
+          <div class="status-label">🛡️ ARMOR</div>
+          <div class="bar armor"><span id="armor-bar"></span></div>
+          <div>Armor: <span id="armor-value">0</span></div>
+
+          <div class="level">XP: <span id="xp-value">0</span></div>
+          <div class="level">DAY <span id="day-value">1</span></div>
+        </div>
+
+        <div class="world-panel glass">
+          <div id="dimension-name" class="world-title">The Overworld</div>
+          <div>Explore. Gather. Survive.</div>
+        </div>
+
+        <div class="crosshair">+</div>
+        <div id="toast" role="status"></div>
+        <div id="damage-flash"></div>
+
+        <div class="bottom-hud">
+          <div id="hotbar" class="inventory glass"></div>
+          <div class="hint">
+            WASD Move · Mouse Look · Space Jump ·
+            Left-click Mine/Attack · Right-click Build ·
+            E Use Portal · F Eat · R Armor
+          </div>
+        </div>
+      </div>
+
+      <section id="start-screen" class="overlay">
+        <div class="hero-card">
+          <div class="eyebrow">✦ YOUR ADVENTURE STARTS HERE ✦</div>
+          <h1>VOXEL <span>REALMS</span></h1>
+          <p class="hero-subtitle">
+            A world of blocks, creatures and endless possibilities.
+          </p>
+          <div class="feature-chips">
+            <span>🌲 Explore</span>
+            <span>⚔️ Fight</span>
+            <span>🥕 Survive</span>
+            <span>🐑 Discover</span>
+          </div>
+          <button id="start-button" class="primary-button">
+            ▶ ENTER THE WORLD
+          </button>
+          <p class="tiny">3D browser game · Desktop controls recommended</p>
+        </div>
+      </section>
+
+      <section id="pause-screen" class="overlay hidden">
+        <div class="menu-card">
+          <h2>Adventure Paused</h2>
+          <p>Your world is waiting for you.</p>
+          <button id="resume-button" class="primary-button">▶ RESUME</button>
+          <button id="restart-button" class="secondary-button">
+            ↻ Restart Game
+          </button>
+        </div>
+      </section>
+
+      <section id="death-screen" class="overlay hidden">
+        <div class="menu-card">
+          <h2>☠ Adventure Over</h2>
+          <p>You can try again. Every world offers another chance.</p>
+          <button id="restart-button-death" class="primary-button">
+            ↻ PLAY AGAIN
+          </button>
+        </div>
+      </section>
+
+      <aside class="dimension-menu glass">
+        <div class="menu-label">WORLDS</div>
+        <button data-world="overworld">🌿 Overworld</button>
+        <button data-world="nether">🔥 The Nether</button>
+        <button data-world="end">🌌 The End</button>
+
+        <div class="menu-divider"></div>
+        <div class="menu-label">EQUIPMENT</div>
+        <button id="armor-button">🛡️ Equip armor (R)</button>
+        <button id="eat-button">🍎 Eat selected food (F)</button>
+        <button id="inventory-button">🎒 Inventory</button>
+      </aside>
+
+      <section id="inventory-panel" class="glass hidden">
+        <h3>Inventory</h3>
+        <div id="inventory-list"></div>
+      </section>
+    </main>
+
+    <footer>
+      <span>◆ VOXEL REALMS</span>
+      <span>Explore your own little universe.</span>
+      <span>Built for the web ✦</span>
+    </footer>
+  </div>
+
+  <script type="module" src="game.js"></script>
+
+  <script type="module">
+    // Connect the HTML dimension buttons to the existing game function.
+    // The game.js functions are module-scoped, so use the game's
+    // keyboard-independent controls through a small custom event instead.
+  </script>
+</body>
+</html>
