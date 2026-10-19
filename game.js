@@ -1470,26 +1470,31 @@ const bindClick = (id, callback) => {
 };
 
 bindClick("start-button", startGame);
+
 bindClick("resume-button", () => {
-  paused = false;
-  $("pause-screen")?.classList.add("hidden");
+  togglePause(false);
   renderer.domElement.requestPointerLock?.();
 });
-bindClick("restart-button", restartGame);
-bindClick("eat-button", eatFood);
-bindClick("armor-button", equipArmor);
 
-bindClick("nether-button", () => generateWorld("nether"));
-bindClick("overworld-button", () => generateWorld("overworld"));
-bindClick("end-button", () => generateWorld("end"));
+bindClick("restart-button", restartGame);
+bindClick("restart-button-death", restartGame);
+
+bindClick("pause-button", () => {
+  if (started && !dead) togglePause();
+});
+
+bindClick("armor-button", equipArmor);
+bindClick("eat-button", eatFood);
 
 bindClick("inventory-button", () => {
   const panel = $("inventory-panel");
   if (panel) panel.classList.toggle("hidden");
 });
 
-window.addEventListener("blur", () => {
-  keys = {};
+document.querySelectorAll("[data-world]").forEach(button => {
+  button.addEventListener("click", () => {
+    generateWorld(button.dataset.world);
+  });
 });
 
 // ==================================================
